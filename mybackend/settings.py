@@ -17,11 +17,12 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost").split(" ")
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
 ]
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 CORS_ORIGIN_ALLOW_ALL = True
-
+WHITENOISE_USE_FINDERS = True
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
