@@ -22,7 +22,6 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS")
 # Application definition
 
 INSTALLED_APPS = [
-    "whitenoise.runserver_nostatic",
     "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -30,11 +29,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary_storage",
     "corsheaders",
     "django_cleanup.apps.CleanupConfig",
     "rest_framework_swagger",
     "rest_framework",
     "App_Main",
+    "cloudinary",
 ]
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 CORS_ORIGIN_ALLOW_ALL = True
@@ -70,8 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "mybackend.wsgi.application"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -125,7 +126,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static/",
 ]
 MEDIA_URL = "/media/"
-
+CLOUDINARY_URL = config("CLOUDINARY_URL")
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     "DATETIME_FORMAT": "%m/%d/%Y %H:%M:%S",
