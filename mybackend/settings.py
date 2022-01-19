@@ -126,7 +126,11 @@ STATICFILES_DIRS = [
     BASE_DIR / "static/",
 ]
 MEDIA_URL = "/media/"
-CLOUDINARY_URL = config("CLOUDINARY_URL")
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": config("CLOUD_NAME"),
+    "API_KEY": config("CLOUD_API_KEY"),
+    "API_SECRET": config("CLOUD_API_SECRET"),
+}
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     "DATETIME_FORMAT": "%m/%d/%Y %H:%M:%S",
