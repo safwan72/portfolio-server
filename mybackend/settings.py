@@ -17,7 +17,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -241,14 +241,10 @@ JAZZMIN_SETTINGS = {
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 
 # HSTS settings HTTP Strict Transport Settings
 SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-
-# Django-Heroku
-django_heroku.settings(locals())
