@@ -121,10 +121,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 MEDIA_ROOT = MEDIA_DIR
-STATIC_ROOT = BASE_DIR / "staticfiles/"
-STATICFILES_DIRS = [
-    BASE_DIR / "static/",
-]
 MEDIA_URL = "/media/"
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": config("CLOUD_NAME"),
